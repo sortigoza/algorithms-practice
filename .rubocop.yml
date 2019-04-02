@@ -1,2 +1,5 @@
 Naming/UncommunicativeMethodParamName:
   Enabled: false
+
+Style/Documentation:
+  Enabled: false
