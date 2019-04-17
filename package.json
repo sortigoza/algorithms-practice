@@ -13,8 +13,8 @@
     "mocha": "^6.1.3"
   },
   "scripts": {
-    "test": "mocha *.js",
-    "lint": "eslint --fix *.js"
+    "test": "mocha **/*.js",
+    "lint": "eslint --fix **/*.js"
   },
   "author": "",
   "license": "ISC"
