@@ -87,45 +87,48 @@ class CidrMask {
 const solution = new CidrMask();
 const ipv4validator = new Ipv4Validator();
 
+describe('cidr mask converter', () => {
+  it('should count character occurences', () => {
+    assert.equal(solution._countOccurences('000000', '1'), 0);
+    assert.equal(solution._countOccurences('1000', '1'), 1);
+    assert.equal(solution._countOccurences('111000', '1'), 3);
+    assert.equal(solution._countOccurences('111111', '1'), 6);
+  });
 
-it('should count character occurences', () => {
-  assert.equal(solution._countOccurences('000000', '1'), 0);
-  assert.equal(solution._countOccurences('1000', '1'), 1);
-  assert.equal(solution._countOccurences('111000', '1'), 3);
-  assert.equal(solution._countOccurences('111111', '1'), 6);
+  it('should convert valid masks', () => {
+    assert.equal(solution.maskToCidr('127.0.0.0'), 7);
+  });
+
+  it('should return invalid for invalid masks', () => {
+    assert.equal(solution.maskToCidr('127.0.0'), 'Invalid');
+    assert.equal(solution.maskToCidr('127.0.0.0.0'), 'Invalid');
+    assert.equal(solution.maskToCidr('127.0.0.1'), 'Invalid');
+  });
+
+  it('should convert valid cidr', () => {
+    assert.equal(solution.cidrToMask(8), '255.0.0.0');
+    assert.equal(solution.cidrToMask(10), '255.192.0.0');
+  });
+
+  it('should return invalid for invalid cidr', () => {
+    assert.equal(solution.cidrToMask(0), 'Invalid');
+    assert.equal(solution.cidrToMask(-1), 'Invalid');
+    assert.equal(solution.cidrToMask(33), 'Invalid');
+  });
 });
 
-it('should convert valid masks', () => {
-  assert.equal(solution.maskToCidr('127.0.0.0'), 7);
-});
+describe('ipv4 validator', () => {
+  it('test valid ipv4', () => {
+    assert.equal(ipv4validator.validate('127.0.0.1'), true);
+    assert.equal(ipv4validator.validate('0.0.0.0'), true);
+    assert.equal(ipv4validator.validate('192.168.0.1'), true);
+    assert.equal(ipv4validator.validate('255.255.255.255'), true);
+  });
 
-it('should return invalid for invalid masks', () => {
-  assert.equal(solution.maskToCidr('127.0.0'), 'Invalid');
-  assert.equal(solution.maskToCidr('127.0.0.0.0'), 'Invalid');
-  assert.equal(solution.maskToCidr('127.0.0.1'), 'Invalid');
-});
-
-it('should convert valid cidr', () => {
-  assert.equal(solution.cidrToMask(8), '255.0.0.0');
-  assert.equal(solution.cidrToMask(10), '255.192.0.0');
-});
-
-it('should return invalid for invalid cidr', () => {
-  assert.equal(solution.cidrToMask(0), 'Invalid');
-  assert.equal(solution.cidrToMask(-1), 'Invalid');
-  assert.equal(solution.cidrToMask(33), 'Invalid');
-});
-
-it('test valid ipv4', () => {
-  assert.equal(ipv4validator.validate('127.0.0.1'), true);
-  assert.equal(ipv4validator.validate('0.0.0.0'), true);
-  assert.equal(ipv4validator.validate('192.168.0.1'), true);
-  assert.equal(ipv4validator.validate('255.255.255.255'), true);
-});
-
-it('test invalid ipv4', () => {
-  assert.equal(ipv4validator.validate('192.168.1.2.3'), false);
-  assert.equal(ipv4validator.validate('a.b.c.d'), false);
-  assert.equal(ipv4validator.validate('255.256.250.0'), false);
-  assert.equal(ipv4validator.validate('....'), false);
+  it('test invalid ipv4', () => {
+    assert.equal(ipv4validator.validate('192.168.1.2.3'), false);
+    assert.equal(ipv4validator.validate('a.b.c.d'), false);
+    assert.equal(ipv4validator.validate('255.256.250.0'), false);
+    assert.equal(ipv4validator.validate('....'), false);
+  });
 });

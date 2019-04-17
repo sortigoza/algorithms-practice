@@ -33,16 +33,18 @@ class Solution {
 
 const solution = new Solution();
 
-it('finds valid pair', () => {
-  const testList = [1, 2, 3, 5];
+describe('pair sum match k', () => {
+  it('finds valid pair', () => {
+    const testList = [1, 2, 3, 5];
 
-  assert.equal(solution.find(testList, 3), true); // 1 + 2
-  assert.equal(solution.find(testList, 5), true); // 2 + 3
-  assert.equal(solution.find(testList, 6), true); // 1 + 5
-});
+    assert.equal(solution.find(testList, 3), true); // 1 + 2
+    assert.equal(solution.find(testList, 5), true); // 2 + 3
+    assert.equal(solution.find(testList, 6), true); // 1 + 5
+  });
 
-it('finds does not find valid pair', () => {
-  const testList = [1, 2, 3, 5];
+  it('finds does not find valid pair', () => {
+    const testList = [1, 2, 3, 5];
 
-  assert.equal(solution.find(testList, 30), false);
+    assert.equal(solution.find(testList, 30), false);
+  });
 });

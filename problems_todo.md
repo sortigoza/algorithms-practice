@@ -55,3 +55,24 @@ For example, given array = [10, 5, 2, 7, 8, 7] and k = 3, we should get: [10, 7,
 8 = max(2, 7, 8)
 8 = max(7, 8, 7)
 Do this in O(n) time and O(k) space. You can modify the input array in-place and you do not need to store the results. You can simply print them out as you compute them.
+
+# Daily Coding Problem: Problem #19 [Medium]
+
+A builder is looking to build a row of N houses that can be of K different colors. He has a goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
+
+Given an N by K matrix where the nth row and kth column represents the cost to build the nth house with kth color, return the minimum cost which achieves this goal.
+
+K = 3; [1, 2, 3], number of colours
+N = 4, number of houses
+
+  | a / b / c
+1 | 1   2   3
+2 | 4   5   6
+3 | 8   7   9
+4 | 4   1   6
+
+for each row:
+- find lowest k
+- if lowest k is the same k as previous, find second lowest
+- store current k
+- next row

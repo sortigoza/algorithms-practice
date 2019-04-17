@@ -67,73 +67,75 @@ class Solution {
   }
 }
 
-it('tests is safe function', () => {
-  const board3x3 = [
-    [1, 0, 1],
-    [0, 0, 0],
-    [0, 0, 0],
-  ];
+describe('n qeens', () => {
+  it('tests is safe function', () => {
+    const board3x3 = [
+      [1, 0, 1],
+      [0, 0, 0],
+      [0, 0, 0],
+    ];
 
-  const sol = new Solution(board3x3);
-  assert.equal(
-    sol._isSafeOnTheUpColumn(1, 0),
-    false,
-  );
-  assert.equal(
-    sol._isSafeOnTheUpColumn(1, 1),
-    true,
-  );
+    const sol = new Solution(board3x3);
+    assert.equal(
+      sol._isSafeOnTheUpColumn(1, 0),
+      false,
+    );
+    assert.equal(
+      sol._isSafeOnTheUpColumn(1, 1),
+      true,
+    );
 
-  assert.equal(
-    sol._isSafeOnDownDiagonal(1, 1),
-    false,
-  );
-  assert.equal(
-    sol._isSafeOnDownDiagonal(1, 2),
-    true,
-  );
+    assert.equal(
+      sol._isSafeOnDownDiagonal(1, 1),
+      false,
+    );
+    assert.equal(
+      sol._isSafeOnDownDiagonal(1, 2),
+      true,
+    );
 
-  assert.equal(
-    sol._isSafeOnUpDiagonal(1, 1),
-    false,
-  );
-  assert.equal(
-    sol._isSafeOnUpDiagonal(1, 0),
-    true,
-  );
-});
+    assert.equal(
+      sol._isSafeOnUpDiagonal(1, 1),
+      false,
+    );
+    assert.equal(
+      sol._isSafeOnUpDiagonal(1, 0),
+      true,
+    );
+  });
 
-it('tests n qeens for 3 by 3 board', () => {
-  const board3x3 = [
-    [0, 0, 0],
-    [0, 0, 0],
-    [0, 0, 0],
-  ];
+  it('tests n qeens for 3 by 3 board', () => {
+    const board3x3 = [
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ];
 
-  const solution = new Solution(board3x3);
-  assert.equal(
-    solution.nQeens(2),
-    true,
-  );
-  console.log(solution.board);
-  assert.equal(
-    solution.nQeens(2),
-    false,
-  );
-});
+    const solution = new Solution(board3x3);
+    assert.equal(
+      solution.nQeens(2),
+      true,
+    );
+    console.log(solution.board); // eslint-disable-line no-console
+    assert.equal(
+      solution.nQeens(2),
+      false,
+    );
+  });
 
-it('tests n qeens for 4 by 4 board', () => {
-  const board4x4 = [
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-    [0, 0, 0, 0],
-  ];
+  it('tests n qeens for 4 by 4 board', () => {
+    const board4x4 = [
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+      [0, 0, 0, 0],
+    ];
 
-  const solution = new Solution(board4x4);
-  assert.equal(
-    solution.nQeens(4),
-    true,
-  );
-  console.log(solution.board);
+    const solution = new Solution(board4x4);
+    assert.equal(
+      solution.nQeens(4),
+      true,
+    );
+    console.log(solution.board); // eslint-disable-line no-console
+  });
 });

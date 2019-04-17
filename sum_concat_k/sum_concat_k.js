@@ -39,17 +39,19 @@ class Solution {
 const testItems = [1, 2, 3, 4];
 const solution = new Solution();
 
-it('find k', () => {
-  assert.equal(solution.find(testItems, 1234)[0], true);
-  assert.equal(solution.find(testItems, 10)[0], true);
-  assert.equal(solution.find(testItems, 19)[0], true);
-  assert.equal(solution.find(testItems, 46)[0], true);
-});
+describe('sum or concat combination gives k', () => {
+  it('find k', () => {
+    assert.equal(solution.find(testItems, 1234)[0], true);
+    assert.equal(solution.find(testItems, 10)[0], true);
+    assert.equal(solution.find(testItems, 19)[0], true);
+    assert.equal(solution.find(testItems, 46)[0], true);
+  });
 
-it('does not find k', () => {
-  assert.equal(solution.find(testItems, 460)[0], false);
-});
+  it('does not find k', () => {
+    assert.equal(solution.find(testItems, 460)[0], false);
+  });
 
-it('evaluates correctly', () => {
-  assert.equal(solution._evaluate([[12], [34]]), 46);
+  it('evaluates correctly', () => {
+    assert.equal(solution._evaluate([[12], [34]]), 46);
+  });
 });
